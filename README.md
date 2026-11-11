@@ -1,8 +1,10 @@
-# CyberWall website (static, early-access)
+# Talos Web Services website (static, early-access)
 
-A clean, static marketing site for **CyberWall**, a mostly-human web security service for small businesses running PHP-based online stores (WooCommerce, WordPress, Magento, Shopware). Plain HTML + CSS + a little vanilla JS. No build step, no external dependencies, no external fonts. It works by opening `index.html`.
+A clean, static marketing site for **Talos Web Services**, a mostly-human web security service for small businesses running PHP-based online stores (WooCommerce, WordPress, Magento, Shopware). Plain HTML + CSS + a little vanilla JS. No build step, no external dependencies, no external fonts. It works by opening `index.html` at the repository root.
 
 ## Files
+
+These files all live at the repository root. Links between pages, `style.css`, and `script.js` are relative, so they resolve from that root.
 
 | File | What it is |
 |---|---|
@@ -15,38 +17,39 @@ A clean, static marketing site for **CyberWall**, a mostly-human web security se
 | `script.js` | Mobile nav toggle, `?plan=` prefill, contact-form validation and confirmation message |
 | `README.md` | This file |
 
-The logo (shield + wall motif) is an inline SVG in each page's header/footer; the favicon is an inline SVG data-URI in each page's `<head>`. No image files are used.
+The logo (a shield) is an inline SVG in each page's header/footer; the favicon is an inline SVG data-URI in each page's `<head>`. The mark has no wordmark. No image files are used.
 
 ## Preview
 
-Open `index.html` directly in a browser, or:
+From the repository root:
 
 ```
-cd cyberwall
 python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
+Opening `index.html` directly in a browser also works.
+
 ## Deploy
 
-Any static host works; upload the folder contents as-is.
+The site is the repository root. Any static host works; upload these files as-is. There is no build step.
 
-- **Netlify:** drag-and-drop the folder at app.netlify.com/drop, or connect the repo (no build command, publish directory `.`).
-- **Vercel:** `vercel` from the folder (framework: "Other", no build command, output directory `.`).
-- **GitHub Pages:** push to a repo, then Settings > Pages > deploy from the branch root.
+- **GitHub Pages:** Settings > Pages > deploy from the branch root (`/`). `index.html` is at the root, so Pages can serve the site with no build command and no publish subdirectory.
+- **Netlify:** drag-and-drop the repo folder at app.netlify.com/drop, or connect the repo (no build command, publish directory `.`).
+- **Vercel:** `vercel` from the repo root (framework: "Other", no build command, output directory `.`).
 - **Any host / PHP hosting / S3 / etc.:** upload the files to the web root.
 
 ## TODOs before going live
 
 1. **Form backend (required).** `contact.html` is front-end only. It validates in the browser and shows a friendly confirmation, **but nothing is sent or stored**. Connect it to Formspree, Netlify Forms, or a PHP mail handler (see the HTML comment in `contact.html` and the TODO in `script.js`). The on-page confirmation also currently says nothing has been delivered; remove that demo note once the backend works.
-2. **Real email address.** `hello@cyberwall.example` is a **placeholder** (appears in the footer of every page and on the contact page). No real phone number or postal address has been invented; add them only if they exist.
-3. **Domain.** Replace the placeholder `https://www.cyberwall.example` in the `og:url` tags with the real domain; consider adding an `og:image` and canonical links.
-4. **Name check.** The name "CyberWall" has **not** been checked for trademark or domain conflicts. Do this (trademark search, domain and social handles) before investing in the brand.
+2. **Real email address.** `hello@taloswebservices.example` is a **placeholder** (appears in the footer of every page and on the contact page). No real phone number or postal address has been invented; add them only if they exist.
+3. **Domain.** Replace the placeholder `https://www.taloswebservices.example` in the `og:url` tags with the real domain; consider adding an `og:image` and canonical links.
+4. **Name check.** The name "Talos Web Services" has **not** been checked for trademark or domain conflicts. Do this (trademark search, domain and social handles) before investing in the brand.
 5. **Analytics** (privacy-friendly, if wanted) and a cookie notice if required where you operate.
 6. **Legal pages:** privacy policy, terms of service, and (if relevant) refund and data-processing terms. The pricing FAQ currently says the privacy policy is "coming soon".
 7. **Pricing:** shown as "launch pricing", and final pricing may change. Target response times per plan are not published yet; add them once decided.
 8. **Team content:** the About page has a labelled "bios coming soon" placeholder. No names, photos, headcounts or credentials were invented. Customer stories are likewise a labelled "coming soon" note.
-9. **Keep the copy true.** The site says CyberWall is run by real people ("mostly human"), supported by monitoring tools and standard checks, that a real person reviews **every** update on the Priority plan, and that on Essentials/Standard the team reviews and monitors while routine updates use standard tools and checks. Make sure the way the business actually operates matches these statements, and update the copy if it changes. Avoid claims like "100% human" or "no automation".
+9. **Keep the copy true.** The site says Talos Web Services is run by real people ("mostly human"), supported by monitoring tools and standard checks, that a real person reviews **every** update on the Priority plan, and that on Essentials/Standard the team reviews and monitors while routine updates use standard tools and checks. Make sure the way the business actually operates matches these statements, and update the copy if it changes. Avoid claims like "100% human" or "no automation".
 10. Confirm the service claims (daily monitoring, rollback, checkout test, skimmer/backdoor checks, hosting compatibility, data location) match what is actually delivered at launch.
 11. Verify the exact source links (see below) and the "researchers confirmed code execution against test servers" wording before launch.
 

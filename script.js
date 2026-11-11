@@ -1,4 +1,4 @@
-/* CyberWall — small vanilla JS: mobile nav, plan prefill, contact form validation. */
+/* Talos Web Services — small vanilla JS: mobile nav, plan prefill, contact form validation. */
 (function () {
   document.documentElement.classList.add('js');
 
